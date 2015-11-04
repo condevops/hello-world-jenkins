@@ -1,0 +1,9 @@
+.classpath
+.DS_Store
+.project
+.settings
+target
+pom.xml.versionsBackup
+/bin/
+.README.md.html
+

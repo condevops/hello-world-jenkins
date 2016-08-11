@@ -24,11 +24,11 @@
     <repository>
       <id>cond.nexus.battery-park</id>
       <name>Release repo on dev01</name>
-      <url>http://nexus.battery-park.conductor.com/content/repositories/releases</url>
+      <url>http://nexus-write.battery-park.conductor.com/content/repositories/releases</url>
     </repository>
     <snapshotRepository>
       <id>cond.nexus.battery-park</id>
-      <url>http://nexus.battery-park.conductor.com/content/repositories/snapshots</url>
+      <url>http://nexus-write.battery-park.conductor.com/content/repositories/snapshots</url>
       <uniqueVersion>false</uniqueVersion>
     </snapshotRepository>
   </distributionManagement>

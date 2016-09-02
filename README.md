@@ -1,7 +1,7 @@
 # hello-world-jenkins
 
 <p>
-<img src="http://thenewcode.com/assets/images/thumbnails/homer-simpson.svg" alt="nexus">
+<img src="https://badges.conductor.com/nexus/v/http/nexus-write.battery-park.conductor.com/releases/conductor-test/hello-world-jenkins.svg" alt="nexus">
 </p>
 
 dummy hello world project for testing jenkins things

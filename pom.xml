@@ -11,7 +11,7 @@
 
   <groupId>conductor-test</groupId>
   <artifactId>hello-world-jenkins</artifactId>
-  <version>0.4.5-SNAPSHOT</version>
+  <version>0.4.5</version>
 
   <build>
     <pluginManagement>
@@ -43,7 +43,7 @@
   <scm>
     <connection>scm:git:git@github.com:condevops/hello-world-jenkins.git</connection>
     <developerConnection>scm:git:git@github.com:condevops/hello-world-jenkins.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>hello-world-jenkins-0.4.5</tag>
   </scm>
 
 </project>

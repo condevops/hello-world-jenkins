@@ -1,33 +1,20 @@
 node("java8-mvn-slave")
 {
-//    String branch = env.BRANCH_NAME;
-
     stage("initialize")
     {
         checkout scm
         sh "mvn -B dependency:go-offline help:active-profiles"
     }
 
-  //  if (branch == null || master.equals(branch))
-//    {
-//        stage("release")
-//        {
-            //sh "mvn -B unleash:perform"
-//            sh "mvn -B release:prepare release:perform -Dresume=false"
-//        }
-//    }
-//    else
-//    {
-        stage("build")
-        {
-            sh "mvn -B test-compile"
-        }
+    stage("build")
+    {
+        sh "mvn -B test-compile"
+    }
 
-        stage("tests")
-        {
-            sh "mvn -B verify"
-        }
-  //  }
+    stage("tests")
+    {
+        sh "mvn -B verify"
+    }
 
     stage("publish")
     {

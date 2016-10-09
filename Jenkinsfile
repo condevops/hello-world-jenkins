@@ -2,7 +2,10 @@ node("java8-mvn-slave")
 {
     echo "building branch " + env.BRANCH_NAME;
 
-    echo env;
+    for(e in env)
+    {
+       echo e + " is " + ${e}
+    }
 
     stage("initialize")
     {

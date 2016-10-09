@@ -24,15 +24,11 @@ node("java8-mvn-slave")
         step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
     }
 
-    stage("deploy")
+    if (branch == null || master.equals(branch))
     {
-        if (branch == null || master.equals(branch))
+        stage("deploy")
         {
             sh "mvn -B deploy"
-        }
-        else
-        {
-            echo "artifact deployment not required"
         }
     }
 }

@@ -2,6 +2,8 @@ node("java8-mvn-slave")
 {
     echo "building branch " + env.BRANCH_NAME;
 
+    echo env;
+
     stage("initialize")
     {
         checkout scm
@@ -20,4 +22,6 @@ node("java8-mvn-slave")
         step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
         step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
     }
+
+
 }

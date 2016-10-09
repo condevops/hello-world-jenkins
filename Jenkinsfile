@@ -1,18 +1,11 @@
 node("java8-mvn-slave")
 {
-    stage("checkout")
+    echo "building branch " + env.BRANCH_NAME;
+
+    stage("initialize")
     {
         checkout scm
-    }
-
-    stage("dependencies")
-    {
-        sh "mvn -B dependency:go-offline"
-    }
-
-    stage("active profiles")
-    {
-        sh "mvn -B help:active-profiles"
+        sh "mvn -B dependency:go-offline help:active-profiles"
     }
 
     stage("build")
@@ -23,5 +16,6 @@ node("java8-mvn-slave")
     stage("tests")
     {
         sh "mvn -B verify"
+        junit testResults: '**/surefire-reports/*.xml'
     }
 }

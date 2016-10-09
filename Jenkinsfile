@@ -16,7 +16,8 @@ node("java8-mvn-slave")
     stage("tests")
     {
         sh "mvn -B verify"
-        junit testResults: "**/surefire-reports/*.xml"
-        JacocoPublisher execPattern: "target/jacoco.exec"
+
+        step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
+        step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
     }
 }

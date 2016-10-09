@@ -1,11 +1,12 @@
 node("java8-mvn-slave")
 {
-    echo "building branch " + env.BRANCH_NAME;
-
-    sh 'env | sort'
+    String branch = env.BRANCH_NAME;
 
     stage("initialize")
     {
+        echo "** environment **"
+        sh 'env | sort'
+
         checkout scm
         sh "mvn -B dependency:go-offline help:active-profiles"
     }
@@ -23,5 +24,11 @@ node("java8-mvn-slave")
         step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
     }
 
-
+    if (branch == null || master.equals(branch))
+    {
+        stage("deploy")
+        {
+            sh "mvn -B deploy"
+        }
+    }
 }

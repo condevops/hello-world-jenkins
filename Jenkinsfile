@@ -15,7 +15,7 @@ node("java8-mvn-slave")
     {
         stage("release")
         {
-            #sh "mvn -B unleash:perform"
+            //sh "mvn -B unleash:perform"
             sh "mvn -B release:prepare release:perform -Dresume=false"
         }
     }

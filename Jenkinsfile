@@ -2,9 +2,9 @@ node("java8-mvn-slave")
 {
     echo "building branch " + env.BRANCH_NAME;
 
-    for(e in env)
-    {
-       echo e + " is " + ${e}
+    sh 'env > env.txt'
+    readFile('env.txt').split("\r?\n").each {
+        println it
     }
 
     stage("initialize")

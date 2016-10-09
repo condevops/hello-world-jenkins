@@ -12,12 +12,12 @@ node("java8-mvn-slave")
 
     stage("active profiles")
     {
-        sh "mvn -B mvn help:active-profiles"
+        sh "mvn -B help:active-profiles"
     }
 
     stage("build")
     {
-        sh "mvn -B mvn compile-test"
+        sh "mvn -B compile-test"
     }
 
     stage("tests")

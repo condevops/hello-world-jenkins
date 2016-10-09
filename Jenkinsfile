@@ -4,6 +4,8 @@ node("java8-mvn-slave")
 
     stage("initialize")
     {
+        sh "env | sort"
+
         checkout scm
         sh "mvn -B dependency:go-offline help:active-profiles"
     }

@@ -28,7 +28,7 @@ node("java8-mvn-slave")
     {
         stage("deploy")
         {
-            sh "mvn -B deploy"
+            sh "mvn -B unleash:perform"
         }
     }
 }

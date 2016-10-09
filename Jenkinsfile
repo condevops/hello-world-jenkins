@@ -17,7 +17,7 @@ node("java8-mvn-slave")
 
     stage("build")
     {
-        sh "mvn -B compile-test"
+        sh "mvn -B test-compile"
     }
 
     stage("tests")

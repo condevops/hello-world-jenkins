@@ -3,7 +3,7 @@ node("java8-mvn-slave")
     String mvnGoal = "verify";
     String branch = env.BRANCH_NAME;
 
-    if if (branch == null || "master".equals(branch))
+    if (branch == null || "master".equals(branch))
     {
         mvnGoal = "deploy";
     }

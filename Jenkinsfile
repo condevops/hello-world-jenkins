@@ -18,7 +18,7 @@ node("java8-mvn-slave")
 
     stage("build")
     {
-        sh "mvn " + mvnGoal;
+        sh "mvn -B" + mvnGoal;
     }
 
     stage("publish")

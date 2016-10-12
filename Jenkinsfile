@@ -1,6 +1,12 @@
 node("java8-mvn-slave")
 {
-//    String branch = env.BRANCH_NAME;
+    String mvnGoal = "verify";
+    String branch = env.BRANCH_NAME;
+
+    if if (branch == null || "master".equals(branch))
+    {
+        mvnGoal = "deploy";
+    }
 
     stage("initialize")
     {
@@ -10,26 +16,10 @@ node("java8-mvn-slave")
         sh "mvn -B dependency:go-offline help:active-profiles"
     }
 
-  //  if (branch == null || master.equals(branch))
-//    {
-//        stage("release")
-//        {
-            //sh "mvn -B unleash:perform"
-//            sh "mvn -B release:prepare release:perform -Dresume=false"
-//        }
-//    }
-//    else
-//    {
-        stage("build")
-        {
-            sh "mvn -B test-compile"
-        }
-
-        stage("tests")
-        {
-            sh "mvn -B verify"
-        }
-  //  }
+    stage("build")
+    {
+        sh "mvn " + mvnGoal;
+    }
 
     stage("publish")
     {

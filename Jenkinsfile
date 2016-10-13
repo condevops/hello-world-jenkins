@@ -13,12 +13,12 @@ node("java8-mvn-slave")
         sh "env | sort"
 
         checkout scm
-        sh "mvn -B dependency:go-offline help:active-profiles"
+        sh "mvn -B -f projects/pom.xml dependency:go-offline help:active-profiles"
     }
 
     stage("build")
     {
-        sh "mvn -B" + mvnGoal;
+        sh "mvn -B -f projects/pom.xml " + mvnGoal;
     }
 
     stage("publish")

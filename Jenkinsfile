@@ -1,12 +1,12 @@
 node("java8-mvn-slave")
 {
     String mvnGoal = "verify";
-    String branch = env.BRANCH_NAME;
-
-    if (branch == null || "master".equals(branch))
-    {
-        mvnGoal = "deploy";
-    }
+//    String branch = env.BRANCH_NAME;
+//
+//    if (branch == null || "master".equals(branch))
+//    {
+//        mvnGoal = "deploy";
+//    }
 
     stage("initialize")
     {
@@ -18,7 +18,7 @@ node("java8-mvn-slave")
 
     stage("build")
     {
-        sh "mvn " + mvnGoal;
+        sh "mvn -B " + mvnGoal;
     }
 
     stage("publish")

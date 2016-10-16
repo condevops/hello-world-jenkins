@@ -3,7 +3,7 @@ node("java8-mvn-slave")
     stage("build")
     {
         sh "env | sort"
-        sh "mvn -B unleash:perform"
+        sh "mvn -B package"
     }
 
 //    String mvnGoal = "verify";

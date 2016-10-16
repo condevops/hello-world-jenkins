@@ -2,6 +2,8 @@ node("java8-mvn-slave")
 {
     stage("build")
     {
+        checkout scm
+
         sh "env | sort"
         sh "mvn -B package"
     }

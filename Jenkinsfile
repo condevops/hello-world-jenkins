@@ -5,7 +5,7 @@ node("java8-mvn-slave")
         checkout scm
 
         sh "env | sort"
-        sh "mvn -B package"
+        sh "mvn -B unleash:perform"
     }
 
 //    String mvnGoal = "verify";

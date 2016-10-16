@@ -5,7 +5,7 @@ node("java8-mvn-slave")
         checkout scm
 
         sh "env | sort"
-        sh "mvn -B unleash:perform"
+        sh "mvn -B -Dresume=false release:prepare release:perform"
     }
 
 //    String mvnGoal = "verify";

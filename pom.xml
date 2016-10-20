@@ -10,7 +10,7 @@
 
   <groupId>conductor-test</groupId>
   <artifactId>hello-world-jenkins</artifactId>
-  <version>0.7.9-SNAPSHOT</version>
+  <version>0.7.9</version>
 
   <build>
     <pluginManagement>
@@ -43,7 +43,7 @@
   <scm>
     <connection>scm:git:git@github.com:condevops/hello-world-jenkins.git</connection>
     <developerConnection>scm:git:git@github.com:condevops/hello-world-jenkins.git</developerConnection>
-    <tag>HEAD</tag>
+    <tag>0.7.9</tag>
   </scm>
 
 </project>

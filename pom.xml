@@ -10,7 +10,7 @@
 
   <groupId>conductor-test</groupId>
   <artifactId>hello-world-jenkins</artifactId>
-  <version>0.8.3-SNAPSHOT</version>
+  <version>0.8.4-SNAPSHOT</version>
 
   <build>
     <pluginManagement>

@@ -1,4 +1,4 @@
-node("java8-mvn-slave")
+node("maven-8-debian")
 {
     String mvnGoal = "verify"
 

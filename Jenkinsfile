@@ -31,12 +31,12 @@ try
 			step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
 			step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
         
-			setGitHubPullRequestStatus state: 'SUCCESS', context: $context, message: 'Build Successful'
+			setGitHubPullRequestStatus state: 'SUCCESS', context: context, message: 'Build Successful'
 		}
 	}
 }
 catch (Exception e)
 {
-    setGitHubPullRequestStatus state: 'FAILURE', context: $context, message: 'Build Failed'
+    setGitHubPullRequestStatus state: 'FAILURE', context: context, message: 'Build Failed'
     throw e
 }

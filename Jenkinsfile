@@ -1,3 +1,6 @@
+
+try
+{
 node("maven-8-debian")
 {
     String mvnGoal = "verify"
@@ -26,5 +29,13 @@ node("maven-8-debian")
     {
         step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
         step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
+        
+        setGitHubPullRequestStatus state: 'SUCCESS', context: 'mytests', message: 'Tests passed'
     }
+}
+}
+catch (Exception e)
+{
+    setGitHubPullRequestStatus state: 'FAILURE', context: 'mytests', message: 'Some tests failed'
+    throw e
 }

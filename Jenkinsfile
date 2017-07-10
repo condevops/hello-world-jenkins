@@ -1,6 +1,9 @@
 pipeline 
 {
-	agent 'maven-8-debian'
+	agent 
+	{
+		'maven-8-debian'
+	}
 	
 	stages 
 	{
@@ -11,12 +14,18 @@ pipeline
 
 		stage("environment")
 		{
-			sh "env | sort"
+			steps 
+			{
+				sh "env | sort"
+			}
 		}
 
 		stage("build")
 		{
-			sh "mvn -B " + mvnGoal
+			steps
+			{
+				sh "mvn -B " + mvnGoal
+			}
 		}
 
 		stage("publish")

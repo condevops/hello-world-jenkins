@@ -4,10 +4,10 @@ pipeline
 	
 	stages 
 	{
-		stage("checkout")
-		{
-			checkout scm
-		}
+//		stage("checkout")
+//		{
+//			checkout scm
+//		}
 
 		stage("environment")
 		{
@@ -23,6 +23,13 @@ pipeline
 		{
 			step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
 			step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
+		}
+	}
+	post 
+	{
+		always 
+		{
+			echo "build result: ${currentBuild.result}"
 		}
 	}
 }

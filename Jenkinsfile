@@ -34,18 +34,20 @@ pipeline
 	{
 		always 
 		{
+			echo "asdf: $currentBuild"
+			
 			junit(testResults: 'target/surefire-reports/TEST-*.xml')
 			jacoco()
 		}
 		failure
 		{
 			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: 'Build #${currentBuild.getNumber} complete', state: 'FAILURE'
-			slackSend channel: '#jenkins-beta-builds', message: 'Deploy Job ${currentBuild.getNumber()} failed!', tokenCredentialId: 'slack-token'			
+			slackSend channel: '#jenkins-beta-builds', message: 'Deploy Job $currentBuild.getNumber failed!', tokenCredentialId: 'slack-token'			
 		}
 		success
 		{
 			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: 'Build #${currentBuild.getNumber()} complete', state: 'SUCCESS'
-			slackSend channel: '#jenkins-beta-builds', message: 'Deploy Job ${currentBuild.getNumber()} completed!', tokenCredentialId: 'slack-token'
+			slackSend channel: '#jenkins-beta-builds', message: 'Deploy Job $currentBuild.getNumber completed!', tokenCredentialId: 'slack-token'
 		}
 	}
 }

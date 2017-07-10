@@ -31,16 +31,7 @@ pipeline
 		{
 			steps
 			{
-				sh "mvn -B " + mvnGoal
-			}
-		}
-
-		stage("publish")
-		{
-			steps
-			{
-				step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
-				step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
+				sh "mvn -B verify"
 			}
 		}
 	}
@@ -49,6 +40,9 @@ pipeline
 		always 
 		{
 			echo "build result: ${currentBuild.result}"
+			
+			step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
+			step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
 		}
 	}
 }

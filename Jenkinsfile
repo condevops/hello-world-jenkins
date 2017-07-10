@@ -29,10 +29,9 @@ pipeline
 		{
 			echo "build status: ${env.BUILD_STATUS}"
 			
+			junit('**/target/*.xml')
 			jacoco()
-			junit()
 		}
-		
 	}
 }
 

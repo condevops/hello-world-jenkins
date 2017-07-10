@@ -27,11 +27,12 @@ pipeline
 	{
 		always 
 		{
-			echo "build status: ${BUILD_STATUS}"
+			echo "build status: ${env.BUILD_STATUS}"
 			
-			step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
-			step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
+			jacoco()
+			junit()
 		}
+		
 	}
 }
 

@@ -29,7 +29,7 @@ pipeline
 		{
 			echo "build status: ${env.BUILD_STATUS}"
 			
-			junit(testResults: '**/target/*.xml')
+			junit(testResults: 'target/surefire-reports/TEST-*.xml')
 			jacoco()
 		}
 	}

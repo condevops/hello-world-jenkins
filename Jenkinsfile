@@ -29,11 +29,14 @@ pipeline
 		{
 			echo "build status: ${env.BUILD_STATUS}"
 			
-			junit('**/target/*.xml')
+			junit(testResults: '**/target/*.xml')
 			jacoco()
 		}
 	}
 }
+
+//setGitHubPullRequestStatus context: '', message: 'Build #${BUILD_NUMBER} complete', state: 'SUCCESS'
+
 
 //node("maven-8-debian")
 //{

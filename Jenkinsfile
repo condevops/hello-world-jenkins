@@ -1,12 +1,5 @@
 pipeline 
 {
-    String mvnGoal = "verify"
-
-    if (env.IS_M2RELEASEBUILD)
-    {
-        mvnGoal = "-Dresume=false release:prepare release:perform"
-    }
-	
 	agent 
 	{
 		label 'maven-8-debian'
@@ -14,11 +7,6 @@ pipeline
 	
 	stages 
 	{
-//		stage("checkout")
-//		{
-//			checkout scm
-//		}
-
 		stage("environment")
 		{
 			steps 

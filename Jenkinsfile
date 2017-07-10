@@ -2,7 +2,7 @@ pipeline
 {
 	agent 
 	{
-		'maven-8-debian'
+		label 'maven-8-debian'
 	}
 	
 	stages 
@@ -30,8 +30,11 @@ pipeline
 
 		stage("publish")
 		{
-			step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
-			step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
+			steps
+			{
+				step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
+				step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])
+			}
 		}
 	}
 	post 

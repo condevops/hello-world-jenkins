@@ -1,5 +1,12 @@
+
+
 pipeline 
 {
+	environment 
+	{
+		GITHUB_CONTEXT = 'pipeline/pull-requests/hello-world-jenkins'
+    }
+	
 	agent 
 	{
 		label 'maven-8-debian'
@@ -27,10 +34,18 @@ pipeline
 	{
 		always 
 		{
-			echo "build status: ${env.BUILD_STATUS}"
-			
 			junit(testResults: 'target/surefire-reports/TEST-*.xml')
 			jacoco()
+		}
+		failure
+		{
+			setGitHubPullRequestStatus context: '${GITHUB_CONTEXT}', message: 'Build #${BUILD_NUMBER} complete', state: 'FAILURE'
+			slackSend channel: '#jenkins-beta-builds', message: 'Deploy Job ${BUILD_NUMBER} failed!', tokenCredentialId: 'slack-token'			
+		}
+		success
+		{
+			setGitHubPullRequestStatus context: '${GITHUB_CONTEXT}', message: 'Build #${BUILD_NUMBER} complete', state: 'SUCCESS'
+			slackSend channel: '#jenkins-beta-builds', message: 'Deploy Job ${BUILD_NUMBER} completed!', tokenCredentialId: 'slack-token'
 		}
 	}
 }

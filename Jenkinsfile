@@ -27,7 +27,7 @@ pipeline
 	{
 		always 
 		{
-			echo "build result: ${currentBuild.result}"
+			echo "build result: ${BUILD_STATUS}"
 			
 			step([$class: 'JUnitResultArchiver', testResults: 'target/surefire-reports/TEST-*.xml'])
 			step([$class: 'JacocoPublisher', execPattern: 'target/jacoco.exec'])

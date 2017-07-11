@@ -37,7 +37,7 @@ pipeline
 		{
 			echo "asdf: ${currentBuild.number} - ${currentBuild.currentResult}"
 			
-			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: "Build #${currentBuild.number} ${currentBuild.currentResult}", state: ${currentBuild.currentResult}
+			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: "Build #${currentBuild.number} ${currentBuild.currentResult}", state: "${currentBuild.currentResult}"
 			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} complete, status: ${currentBuild.currentResult}", tokenCredentialId: 'slack-token'
 			
 			junit(testResults: 'target/surefire-reports/TEST-*.xml')

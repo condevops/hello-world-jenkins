@@ -30,25 +30,29 @@ pipeline
 			}
 		}
 	}
+	
 	post 
 	{
 		always 
 		{
 			echo "asdf: ${currentBuild.number} - ${currentBuild.currentResult}"
 			
+			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: "Build #${currentBuild.number} ${currentBuild.currentResult}", state: ${currentBuild.currentResult}
+			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} complete, status: ${currentBuild.currentResult}", tokenCredentialId: 'slack-token'
+			
 			junit(testResults: 'target/surefire-reports/TEST-*.xml')
 			jacoco()
 		}
-		failure
-		{
-			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: "Build #${currentBuild.number} complete", state: 'FAILURE'
-			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} failed!", tokenCredentialId: 'slack-token'			
-		}
-		success
-		{
-			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: "Build #${currentBuild.number} complete", state: 'SUCCESS'
-			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} completed!", tokenCredentialId: 'slack-token'			
-		}
+//		failure
+//		{
+//			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: "Build #${currentBuild.number} complete", state: 'FAILURE'
+//			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} failed!", tokenCredentialId: 'slack-token'			
+//		}
+//		success
+//		{
+//			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: "Build #${currentBuild.number} complete", state: 'SUCCESS'
+//			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} completed!", tokenCredentialId: 'slack-token'			
+//		}
 	}
 }
 

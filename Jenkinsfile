@@ -35,6 +35,7 @@ pipeline
 	{
 		always 
 		{
+                        echo "build url: ${BUILD_URL}"
 			junit(testResults: 'target/surefire-reports/TEST-*.xml')
 			jacoco()
 			

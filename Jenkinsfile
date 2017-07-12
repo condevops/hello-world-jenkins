@@ -42,12 +42,12 @@ pipeline
 		failure
 		{
 			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: "Build #${currentBuild.number} complete", state: 'FAILURE'
-			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} failed!\n${BUILD_URL}", tokenCredentialId: 'slack-token'			
+			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} failed! ${BUILD_URL}", tokenCredentialId: 'slack-token'			
 		}
 		success
 		{
 			setGitHubPullRequestStatus context: 'pipeline/pull-requests/hello-world-jenkins', message: "Build #${currentBuild.number} complete", state: 'SUCCESS'
-			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} completed!\n${BUILD_URL}", tokenCredentialId: 'slack-token'			
+			slackSend channel: '#jenkins-beta-builds', message: "Deploy Job ${currentBuild.number} completed! ${BUILD_URL}", tokenCredentialId: 'slack-token'			
 		}
 	}
 }

@@ -1,4 +1,7 @@
 # hello-world-jenkins
 
-dummy hello world project for testing jenkins things
+![Build Status](https://shields.us-east-1.conductor.sh/jenkins/s/http/jenkins-beta.infra.us-east-1.conductor.sh/devops/release-builds/hello-world-jenkins.svg)
+![Tests](https://shields.us-east-1.conductor.sh/jenkins/t/http/jenkins-beta.infra.us-east-1.conductor.sh/devops/release-builds/hello-world-jenkins.svg)
+![Coverage](https://shields.us-east-1.conductor.sh/jenkins/j/http/jenkins-beta.infra.us-east-1.conductor.sh/devops/release-builds/hello-world-jenkins.svg)
 
+dummy hello world project for testing jenkins things

@@ -11,7 +11,7 @@
 
   <groupId>conductor-test</groupId>
   <artifactId>hello-world-jenkins</artifactId>
-  <version>0.10.37-SNAPSHOT</version>
+  <version>0.11.0-rc1-SNAPSHOT</version>
 
   <dependencies>
     <dependency>

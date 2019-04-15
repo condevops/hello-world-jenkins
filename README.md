@@ -6,4 +6,5 @@
 
 dummy hello world project for testing jenkins things
 
-This pom.xml is so basic, it still listens to Coldplay.
+This pom.xml is so basic, it still listens to Coldplay and still hates Nickelback. :smile:
+
